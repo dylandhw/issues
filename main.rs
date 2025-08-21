@@ -60,6 +60,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     if usses.is_empty() {
         println!("no open issues");
     } else {
-        
+        for issue in issues {
+            println!("#{}: {} [{}]", issue.number, issue.title, issue.state)
+        }
     }
+    Ok(())
 }
