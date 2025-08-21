@@ -16,4 +16,8 @@ fn get_repo() -> Option<String> {
         .output()
         .ok()?;
 
+    let url = String::from_utf8_lossy(&output.stdout).trim().to_string();
+
+    /* handle github ssh & https urls */
+    
 }
