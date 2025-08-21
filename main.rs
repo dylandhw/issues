@@ -9,3 +9,11 @@ struct Issue {
     title: String,
     state: String,
 }
+
+fn get_repo() -> Option<String> {
+    let output = Command::new("git")
+        .args(&["config", "--get", "remote.origin.url"])
+        .output()
+        .ok()?;
+
+}
