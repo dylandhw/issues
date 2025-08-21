@@ -44,4 +44,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         AUTHORIZATION,
         HeaderValue::from_str(&format!("token {}", token))?,
     );
+    headers.insert(USER_AGENT, HeaderValue::from_static("git-issues-cli"));
+    
 }
