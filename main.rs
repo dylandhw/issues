@@ -45,5 +45,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         HeaderValue::from_str(&format!("token {}", token))?,
     );
     headers.insert(USER_AGENT, HeaderValue::from_static("git-issues-cli"));
-    
+
+    let client = Client::new();
+    let url = format!("https://api.github.com/repos/{}/issues?state=open", repo);
+    let resp = client.get(&url).headers(headers).send()?
 }
