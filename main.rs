@@ -27,3 +27,16 @@ fn get_repo() -> Option<String> {
         None
     }
 }
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let repo = match get_repo() {
+        Some(r) => r,
+        None => {
+            eprintln!("failed to detect repo");
+            return Ok(());
+        }
+    };
+
+    let token = env::var("GITHUB_TOKEN").expect("set GITHUB_TOKEN env");
+    
+}
