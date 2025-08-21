@@ -49,4 +49,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let client = Client::new();
     let url = format!("https://api.github.com/repos/{}/issues?state=open", repo);
     let resp = client.get(&url).headers(headers).send()?
+
+    is !resp.status().is_success() {
+        eprinln!("error fetching issues: {}", resp.status());
+        return Ok(());
+    }
 }
