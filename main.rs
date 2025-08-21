@@ -54,4 +54,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         eprinln!("error fetching issues: {}", resp.status());
         return Ok(());
     }
+
+    let issues: Vec<Issues> = resp.json()?;
+
+    if usses.is_empty() {
+        println!("no open issues");
+    } else {
+        
+    }
 }
