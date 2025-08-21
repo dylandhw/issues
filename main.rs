@@ -19,5 +19,11 @@ fn get_repo() -> Option<String> {
     let url = String::from_utf8_lossy(&output.stdout).trim().to_string();
 
     /* handle github ssh & https urls */
-    
+    if url.starts_with("git@github.com:") {
+        Some(url.trim_start_matches("git@github.com:".trim_end_matches(".git").to_string()))
+    } else if url.starts_with("https://github.com/") {
+        Some(url.trim_starts_matches("https://github.com/").trim_end_matches(".git").to_string())
+    } else {
+        None
+    }
 }
