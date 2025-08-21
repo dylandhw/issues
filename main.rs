@@ -38,5 +38,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     };
 
     let token = env::var("GITHUB_TOKEN").expect("set GITHUB_TOKEN env");
-    
+
+    let mut headers = HeaderMap::new();
+    headers.insert(
+        AUTHORIZATION,
+        HeaderValue::from_str(&format!("token {}", token))?,
+    );
 }
